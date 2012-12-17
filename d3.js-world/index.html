@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <title></title>
+  <meta charset="utf-8">
+  <style>
+    path{
+      fill: #999;
+      stroke: #fff;
+    }
+  </style>
+  </head>
+  <body>
+    <svg width="960" height="500"></svg>
+    <script src="js/d3.v2.min.js"></script>
+    <script>
+      d3.json("readme.json", function(collection){
+        var graph = d3.select("svg").selectAll("path")
+          .data(collection.features)
+          .enter().append("path")
+          .attr("d", d3.geo.path().projection(d3.geo.mercator()));
+      });
+      
+    </script>
+  </body>
+</html>
